@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0170E412C6FD951000E4339 /* SignInAppleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0170E402C6FD951000E4339 /* SignInAppleHelper.swift */; };
 		D06C8F4E2C3EBAF500833820 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D06C8F4D2C3EBAF500833820 /* FirebaseAuth */; };
 		D06C8F512C3EBC4600833820 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06C8F502C3EBC4600833820 /* AuthenticationView.swift */; };
 		D06C8F532C3EBCEA00833820 /* SignInEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06C8F522C3EBCEA00833820 /* SignInEmailView.swift */; };
@@ -27,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D0170E3F2C6FBF7C000E4339 /* Firebase Bootcamp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Firebase Bootcamp.entitlements"; sourceTree = "<group>"; };
+		D0170E402C6FD951000E4339 /* SignInAppleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAppleHelper.swift; sourceTree = "<group>"; };
 		D06C8F502C3EBC4600833820 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		D06C8F522C3EBCEA00833820 /* SignInEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEmailView.swift; sourceTree = "<group>"; };
 		D06C8F542C3EBE0900833820 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
@@ -75,6 +78,7 @@
 				D06C8F542C3EBE0900833820 /* AuthenticationManager.swift */,
 				D0F0EC9D2C6F7B19007E54DE /* SignInGoogleHelper.swift */,
 				D06C8F582C3EC3C300833820 /* SettingsView.swift */,
+				D0170E402C6FD951000E4339 /* SignInAppleHelper.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -99,6 +103,7 @@
 		D0AE3DDB2C3714EF00351C65 /* Firebase Bootcamp */ = {
 			isa = PBXGroup;
 			children = (
+				D0170E3F2C6FBF7C000E4339 /* Firebase Bootcamp.entitlements */,
 				D0F0EC972C6F6AFE007E54DE /* Firebase-Bootcamp-Info.plist */,
 				D0AE3DDC2C3714EF00351C65 /* Firebase_BootcampApp.swift */,
 				D0AE3DDE2C3714EF00351C65 /* ContentView.swift */,
@@ -217,6 +222,7 @@
 				D06C8F512C3EBC4600833820 /* AuthenticationView.swift in Sources */,
 				D06C8F552C3EBE0900833820 /* AuthenticationManager.swift in Sources */,
 				D0F0EC9C2C6F6F4A007E54DE /* Utilities.swift in Sources */,
+				D0170E412C6FD951000E4339 /* SignInAppleHelper.swift in Sources */,
 				D06C8F532C3EBCEA00833820 /* SignInEmailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,6 +354,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Firebase Bootcamp/Firebase Bootcamp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Firebase Bootcamp/Preview Content\"";
@@ -379,6 +386,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Firebase Bootcamp/Firebase Bootcamp.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Firebase Bootcamp/Preview Content\"";
