@@ -99,9 +99,9 @@
 		D025A6592C73B59600F5DF03 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				D025A65C2C73B5BD00F5DF03 /* Subviews */,
 				D06C8F502C3EBC4600833820 /* AuthenticationView.swift */,
 				D025A65A2C73B5AB00F5DF03 /* AuthenticationVieModel.swift */,
+				D025A65C2C73B5BD00F5DF03 /* Subviews */,
 			);
 			name = Authentication;
 			sourceTree = "<group>";
