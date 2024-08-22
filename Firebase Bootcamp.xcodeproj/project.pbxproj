@@ -16,6 +16,10 @@
 		D025A65E2C73B5CF00F5DF03 /* SignInEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025A65D2C73B5CF00F5DF03 /* SignInEmailViewModel.swift */; };
 		D025A6612C73B60800F5DF03 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025A6602C73B60800F5DF03 /* ProfileView.swift */; };
 		D025A6642C73BA2300F5DF03 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D025A6632C73BA2300F5DF03 /* UserManager.swift */; };
+		D06AB6B32C774388007785C4 /* ProductDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06AB6B22C774388007785C4 /* ProductDatabase.swift */; };
+		D06AB6B62C774528007785C4 /* ProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06AB6B52C774528007785C4 /* ProductsView.swift */; };
+		D06AB6B82C7748B4007785C4 /* ProductsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06AB6B72C7748B4007785C4 /* ProductsManager.swift */; };
+		D06AB6BB2C7756E5007785C4 /* ProductCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06AB6BA2C7756E5007785C4 /* ProductCellView.swift */; };
 		D06C8F4E2C3EBAF500833820 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D06C8F4D2C3EBAF500833820 /* FirebaseAuth */; };
 		D06C8F512C3EBC4600833820 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06C8F502C3EBC4600833820 /* AuthenticationView.swift */; };
 		D06C8F532C3EBCEA00833820 /* SignInEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06C8F522C3EBCEA00833820 /* SignInEmailView.swift */; };
@@ -43,6 +47,10 @@
 		D025A65D2C73B5CF00F5DF03 /* SignInEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEmailViewModel.swift; sourceTree = "<group>"; };
 		D025A6602C73B60800F5DF03 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		D025A6632C73BA2300F5DF03 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		D06AB6B22C774388007785C4 /* ProductDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDatabase.swift; sourceTree = "<group>"; };
+		D06AB6B52C774528007785C4 /* ProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsView.swift; sourceTree = "<group>"; };
+		D06AB6B72C7748B4007785C4 /* ProductsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsManager.swift; sourceTree = "<group>"; };
+		D06AB6BA2C7756E5007785C4 /* ProductCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellView.swift; sourceTree = "<group>"; };
 		D06C8F502C3EBC4600833820 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		D06C8F522C3EBCEA00833820 /* SignInEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInEmailView.swift; sourceTree = "<group>"; };
 		D06C8F542C3EBE0900833820 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
@@ -80,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				D06C8F562C3EC24A00833820 /* RootView.swift */,
+				D06AB6B42C774516007785C4 /* Products */,
 				D025A65F2C73B5ED00F5DF03 /* Profile */,
 				D025A6592C73B59600F5DF03 /* Authentication */,
 				D025A6562C73B56500F5DF03 /* Settings */,
@@ -127,8 +136,26 @@
 			isa = PBXGroup;
 			children = (
 				D025A6632C73BA2300F5DF03 /* UserManager.swift */,
+				D06AB6B72C7748B4007785C4 /* ProductsManager.swift */,
 			);
 			path = Firestore;
+			sourceTree = "<group>";
+		};
+		D06AB6B42C774516007785C4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D06AB6B52C774528007785C4 /* ProductsView.swift */,
+				D06AB6B92C774EC3007785C4 /* Subviews */,
+			);
+			path = Products;
+			sourceTree = "<group>";
+		};
+		D06AB6B92C774EC3007785C4 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				D06AB6BA2C7756E5007785C4 /* ProductCellView.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		D06C8F4C2C3EBAF500833820 /* Frameworks */ = {
@@ -195,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				D0F0EC9B2C6F6F4A007E54DE /* Utilities.swift */,
+				D06AB6B22C774388007785C4 /* ProductDatabase.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -285,10 +313,14 @@
 			files = (
 				D025A65B2C73B5AB00F5DF03 /* AuthenticationVieModel.swift in Sources */,
 				D06C8F592C3EC3C300833820 /* SettingsView.swift in Sources */,
+				D06AB6BB2C7756E5007785C4 /* ProductCellView.swift in Sources */,
 				D0AE3DDF2C3714EF00351C65 /* ContentView.swift in Sources */,
 				D025A6642C73BA2300F5DF03 /* UserManager.swift in Sources */,
+				D06AB6B62C774528007785C4 /* ProductsView.swift in Sources */,
 				D0AE3DDD2C3714EF00351C65 /* Firebase_BootcampApp.swift in Sources */,
 				D06C8F572C3EC24A00833820 /* RootView.swift in Sources */,
+				D06AB6B82C7748B4007785C4 /* ProductsManager.swift in Sources */,
+				D06AB6B32C774388007785C4 /* ProductDatabase.swift in Sources */,
 				D025A65E2C73B5CF00F5DF03 /* SignInEmailViewModel.swift in Sources */,
 				D0F0EC9E2C6F7B19007E54DE /* SignInGoogleHelper.swift in Sources */,
 				D06C8F512C3EBC4600833820 /* AuthenticationView.swift in Sources */,
