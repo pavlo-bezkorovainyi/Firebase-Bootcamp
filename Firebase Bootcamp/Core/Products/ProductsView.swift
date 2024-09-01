@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 @MainActor
 final class ProductsViewModel: ObservableObject {
@@ -13,10 +14,7 @@ final class ProductsViewModel: ObservableObject {
   @Published private(set) var products: [Product] = []
   @Published var selectedFilter: FilterOption?
   @Published var selectedCategory: CategoryOption?
-  
-//  func getAllProducts() async throws {
-//    self.products = try await ProductsManager.shared.getAllProducts(priceDescending: <#Bool?#>, forCategory: <#String?#>)
-//  }
+  private var lastDocument: DocumentSnapshot?
   
   enum FilterOption: String, CaseIterable {
     case noFilter
@@ -34,7 +32,9 @@ final class ProductsViewModel: ObservableObject {
   
   func filterSelected(option: FilterOption) async throws {
     self.selectedFilter = option
-    try await self.getProducts()
+    self.products = []
+    self.lastDocument = nil
+    self.getProducts()
   }
   
   enum CategoryOption: String, CaseIterable {
@@ -50,12 +50,36 @@ final class ProductsViewModel: ObservableObject {
   
   func categorySelected(option: CategoryOption) async throws {
     self.selectedCategory = option
-    try await self.getProducts()
+    self.products = []
+    self.lastDocument = nil
+    self.getProducts()
   }
   
-  func getProducts() async throws {
-    self.products = try await ProductsManager.shared.getAllProducts(priceDescending: selectedFilter?.priceDescending, forCategory: selectedCategory?.categorykey)
+  func getProducts() {
+    Task {
+      let (newProducts, lastDocument) = try await ProductsManager.shared.getAllProducts(priceDescending: selectedFilter?.priceDescending, forCategory: selectedCategory?.categorykey, count: 10, lastDocument: lastDocument)
+      self.products.append(contentsOf: newProducts)
+      if let lastDocument {
+        self.lastDocument = lastDocument
+      }
+      
+    }
   }
+  
+//  func getProductsCount() {
+//    Task {
+//      let count = try await ProductsManager.shared.getAllProductsCount()
+//      print("ALL PRODUCT COUNT: \(count)")
+//    }
+//  }
+  
+  //  func getProductsByRating() {
+  //    Task {
+  //      let (newProducts, lastDocument) = try await ProductsManager.shared.getProductsByRating(count: 3, lastDocument: lastDocument)
+  //      self.products.append(contentsOf: newProducts)
+  //      self.lastDocument = lastDocument
+  //    }
+  //  }
 }
 
 struct ProductsView: View {
@@ -66,10 +90,16 @@ struct ProductsView: View {
     List {
       ForEach(viewModel.products) { product in
         ProductCellView(product: product)
+        
+        if product == viewModel.products.last {
+          ProgressView()
+            .onAppear {
+              print("fetching more products")
+              viewModel.getProducts()
+              
+            }
+        }
       }
-    }
-    .task {
-      try? await viewModel.getProducts()
     }
     .navigationTitle("Products")
     .toolbar(content: {
@@ -97,6 +127,9 @@ struct ProductsView: View {
         }
       }
     })
+    .onAppear {
+      viewModel.getProducts()
+    }
   }
 }
 
