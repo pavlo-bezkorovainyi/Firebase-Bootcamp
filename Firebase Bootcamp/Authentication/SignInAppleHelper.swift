@@ -119,7 +119,7 @@ extension SignInAppleHelper: ASAuthorizationControllerDelegate {
     let name = appleIDCredential.fullName?.givenName
     let email = appleIDCredential.email
     
-    let tokens = SignInWithAppleResult(token: idTokenString, nonce: nonce, name: "", email: "")
+    let tokens = SignInWithAppleResult(token: idTokenString, nonce: nonce, name: name ?? "", email: email ?? "")
     completionHandler?(.success(tokens))
   }
 
