@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import Photos
+import PhotosUI
 
 struct ProfileView: View {
   
   @StateObject private var viewModel = ProfileViewModel()
   @Binding var showSignInView: Bool
+  
+  @State private var selectedItem: PhotosPickerItem? = nil
   
   let prefrenceOptions: [String] = ["Sports", "Movies", "Books"]
   
@@ -62,12 +66,45 @@ struct ProfileView: View {
         } label: {
           Text("Favorite Movie: \(user.favoriteMovie?.title ?? "")")
         }
+        
+        PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
+          Text("Select a photo!")
+        }
+        
+        if let urlString = viewModel.user?.profileImagePathUrl, let url = URL(string: urlString) {
+          AsyncImage(url: url) { image in
+            image
+              .resizable()
+              .scaledToFill()
+              .frame(width: 150, height: 150)
+              .cornerRadius(10)
+          } placeholder: {
+            ProgressView()
+              .frame(width: 150, height: 150)
+          }
+        }
+        
+        if let _ = viewModel.user?.profileImagePath {
+          Button("Delete Image") {
+            viewModel.deleteProfileImage()
+          }
+        }
       }
     }
     .listStyle(.insetGrouped)
     .task {
       try? await viewModel.loadCurrentUser()
+//      
+//      if let user = viewModel.user, let path = user.profileImagePath,
+//         let url = try? await StorageManager.shared.getUrlForImage(path: path) {
+//        self.url = url
+//      }
     }
+    .onChange(of: selectedItem, perform: { newValue in
+      if let newValue {
+        viewModel.saveProfileImage(item: newValue)
+      }
+    })
     .navigationTitle("Profile")
     .toolbar {
       ToolbarItem(placement: .navigationBarTrailing) {
